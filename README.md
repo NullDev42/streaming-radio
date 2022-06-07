@@ -1,10 +1,10 @@
 # Introduction
 
-Dockerfile to build internet radio container.
+Dockerfile to build a streaming radio container.  Uses alpine, mpd, icecast, nginx, php, sqlite, and rompr.
 
 # Installation
 
-Pull the latest version of the image from the docker.
+Pull the latest version of the image from docker.
 
 ```
 docker pull nulldev42/streaming-radio
