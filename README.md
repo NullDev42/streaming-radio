@@ -32,8 +32,8 @@ docker run --name streaming-radio -d \
    zveronline/radio
 ```
 
-This will start the container and you should now be able to browse the web interface on port 8001 and icecast on port 8002.
-Directory "Music" must contains yor music files.
+This will start the container and you should now be able to browse the web interface on port 80 and icecast on port 8002.
+Directory "Music" must contain your music files.
 
 # Docker-compose template
 ```
