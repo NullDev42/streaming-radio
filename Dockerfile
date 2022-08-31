@@ -11,8 +11,7 @@ MOUNT=radio.ogg \
 ICECAST_HOST=127.0.0.1 \
 ICECAST_PASSWORD=qwe123
 
-ADD conf /conf
-ADD entrypoint.sh /entrypoint.sh
+COPY . .
 ADD https://github.com/fatg3erman/RompR/releases/download/${ROMPR_VERSION}/rompr-${ROMPR_VERSION}.zip /tmp/rompr.zip
 
 RUN apk add --update --no-cache wget unzip bash nano tzdata mpd icecast ncmpc supervisor nginx \
