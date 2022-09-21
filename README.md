@@ -2,6 +2,14 @@
 
 Dockerfile to build a streaming radio container.  Uses alpine, mpd, icecast, nginx, php, sqlite, and rompr.
 
+Included binary versions:
+  Alpine    3.16.2
+  Mpd       0.23.7
+  Icecast   2.4.4
+  Nginx     1.22.0
+  Php       8.1.9
+  Rompr     1.61
+
 # Installation
 
 Pull the latest version of the image from docker.
@@ -29,7 +37,7 @@ docker run --name streaming-radio -d \
    --volume rompr-albumart:/srv/rompr/albumart \
    --publish 80:80 \
    --publish 8002:8002
-   zveronline/radio
+   nulldev42/streaming-radio
 ```
 
 This will start the container and you should now be able to browse the web interface on port 80 and icecast on port 8002.
@@ -44,9 +52,12 @@ services:
     container_name: streaming-radio
     environment:
       ADMIN_PASSWORD: qwe123test
+      HOSTNAME: localhost
+      NAMESTREAM: radio
+      DESCRIPTION: radio
       BITRATE: 128
-      ENCODER: ogg
-      MOUNT: radio.ogg
+      ENCODER: mp3
+      MOUNT: radio.mp3
       ICECAST_HOST: 127.0.0.1
       ICECAST_PASSWORD: qwe123
     volumes:
