@@ -6,8 +6,8 @@ HOSTNAME=localhost \
 NAMESTREAM=radio \
 DESCRIPTION=radio \
 BITRATE=128 \
-ENCODER=ogg \
-MOUNT=radio.ogg \
+ENCODER=mp3 \
+MOUNT=radio.mp3 \
 ICECAST_HOST=127.0.0.1 \
 ICECAST_PASSWORD=qwe123
 
