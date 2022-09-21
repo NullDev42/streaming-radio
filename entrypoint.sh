@@ -29,4 +29,7 @@ if [ ! $ICECAST_HOST == 127.0.0.1 ]
 then
 rm -f /etc/supervisor.d/icecast.ini
 fi
+
+# disable icecast status & admin pages
+rm -f /usr/share/icecast/web/*
 exec "$@"
