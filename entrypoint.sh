@@ -3,7 +3,7 @@ set -e
 
 if [ ! -d /var/lib/mpd/playlists ]
 then
-mkdir -p /var/lib/mpd/playlists
+  mkdir -p /var/lib/mpd/playlists
 fi
 
 if [ ! -d /config ]
