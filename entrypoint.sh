@@ -27,7 +27,7 @@ sed -i 's|, GLOB_BRACE| |' /srv/rompr/includes/functions.php
 
 if [ ! $ICECAST_HOST == 127.0.0.1 ]
 then
-rm -f /etc/supervisor.d/icecast.ini
+  rm -f /etc/supervisor.d/icecast.ini
 fi
 
 # disable icecast status & admin pages
