@@ -4,7 +4,7 @@ Dockerfile to build a streaming radio container.  Uses alpine, mpd, icecast, ngi
 
 Included binary versions:
 
-```
+```text
 Alpine    3.16.2
 Mpd       0.23.7
 Icecast   2.4.4
@@ -17,13 +17,13 @@ Rompr     1.61
 
 Pull the latest version of the image from docker.
 
-```
+```bash
 docker pull nulldev42/streaming-radio
 ```
 
 Alternately you can build the image yourself.
 
-```
+```bash
 docker build -t nulldev42/streaming-radio https://github.com/nulldev42/streaming-radio.git
 ```
 
@@ -31,7 +31,7 @@ docker build -t nulldev42/streaming-radio https://github.com/nulldev42/streaming
 
 Run the image
 
-```
+```bash
 docker run --name streaming-radio -d \
    --volume /yourpath/Music:/Music \
    --volume radio-config:/config \
@@ -47,7 +47,7 @@ This will start the container and you should now be able to browse the web inter
 Directory "Music" must contain your music files.
 
 # Docker-compose template
-```
+```docker-compose
 version: '2'
 services:
   streaming-radio:
