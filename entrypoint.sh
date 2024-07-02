@@ -1,5 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 set -e
+
+if [ -d /etc/php83 ]
+then
+  ln -sf /conf/php/php.ini /etc/php83/php.ini
+  ln -sf /conf/php/www.conf /etc/php83/php-fpm.d/www.conf
+  chown -R nginx:nginx /etc/php83
+fi
 
 if [ ! -d /var/lib/mpd/playlists ]
 then
@@ -24,6 +31,8 @@ sed -i s/ICECAST_HOST/$ICECAST_HOST/g /config/radio.conf
 sed -i s/ICECAST_PASSWORD/$ICECAST_PASSWORD/g /config/radio.conf
 
 sed -i 's|, GLOB_BRACE| |' /srv/rompr/includes/functions.php
+
+sed -i '/;user=chrism                     ; setuid to this UNIX account at startup; recommended if root/c user=root' /etc/supervisord.conf
 
 if [ ! $ICECAST_HOST == 127.0.0.1 ]
 then

@@ -1,4 +1,5 @@
-FROM alpine:3.16
+#FROM php:8.1-fpm-alpine
+FROM alpine:3.20.1
 
 ENV ROMPR_VERSION=1.61 \
 ADMIN_PASSWORD=qwe123test \
@@ -16,14 +17,12 @@ ADD https://github.com/fatg3erman/RompR/releases/download/${ROMPR_VERSION}/rompr
 
 RUN apk add --update --no-cache wget unzip bash nano tzdata mpd icecast ncmpc supervisor nginx \
     diffutils composer logrotate \
-    php81-fpm php81-sqlite3 php81-pdo php81-xml php81-gd php81-curl php81-json php81-mbstring php81-intl \
-    php81-pdo_sqlite php81-fileinfo php81-simplexml php81-pdo_mysql \
+    php83-fpm php83-sqlite3 php83-pdo php83-xml php83-gd php83-curl php83-json php83-mbstring php83-intl \
+    php83-pdo_sqlite php83-fileinfo php83-simplexml php83-pdo_mysql \
 #
 && cp /usr/share/zoneinfo/America/New_York /etc/localtime \
 && echo "America/New_York" > /etc/timezone \
 && apk del tzdata \
-#
-&& chmod 755 /entrypoint.sh \
 #
 && cd /tmp \
 && unzip rompr.zip \
@@ -46,13 +45,14 @@ RUN apk add --update --no-cache wget unzip bash nano tzdata mpd icecast ncmpc su
 && ln -sf /conf/nginx/php.conf /etc/nginx/default.d/php.conf \
 && chown -R nginx:nginx /etc/nginx \
 && rm -f /etc/nginx/conf.d/default.conf \
-&& mkdir /run/php-fpm \
+&& mkdir /run/php-fpm
+
+#RUN ln -sf /conf/php/php.ini /etc/php81/php.ini
+#RUN ln -sf /conf/php/www.conf /etc/php81/php-fpm.d/www.conf
+#RUN chown -R nginx:nginx /etc/php81
 #
-&& ln -sf /conf/php/php.ini /etc/php81/php.ini \
-&& ln -sf /conf/php/www.conf /etc/php81/php-fpm.d/www.conf \
-&& chown -R nginx:nginx /etc/php81 \
-#
-&& chown root:root /usr/bin/mpd
+#RUN chmod 755 /entrypoint.sh
+RUN chown root:root /usr/bin/mpd
 
 EXPOSE 80
 EXPOSE 8002
