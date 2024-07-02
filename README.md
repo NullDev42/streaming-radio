@@ -5,11 +5,11 @@ Dockerfile to build a streaming radio container.  Uses alpine, mpd, icecast, ngi
 Included binary versions:
 
 ```text
-Alpine    3.16.2
-Mpd       0.23.7
+Alpine    3.20.1
+Mpd       0.23.15
 Icecast   2.4.4
-Nginx     1.22.0
-Php       8.1.9
+Nginx     1.26.1
+Php       8.3.8
 Rompr     1.61
 ```
 
