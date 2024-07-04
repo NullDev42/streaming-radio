@@ -39,6 +39,8 @@ then
   rm -f /etc/supervisor.d/icecast.ini
 fi
 
+chown -R nginx:nginx /srv/rompr
+
 # disable icecast status & admin pages
 rm -f /usr/share/icecast/web/*
 exec "$@"

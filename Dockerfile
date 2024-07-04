@@ -17,7 +17,7 @@ ADD https://github.com/fatg3erman/RompR/releases/download/${ROMPR_VERSION}/rompr
 RUN apk add --update --no-cache wget unzip bash nano tzdata mpd icecast ncmpc supervisor nginx \
     diffutils composer logrotate \
     php83-fpm php83-sqlite3 php83-pdo php83-xml php83-gd php83-curl php83-json php83-mbstring php83-intl \
-    php83-pdo_sqlite php83-fileinfo php83-simplexml php83-pdo_mysql \
+    php83-pdo_sqlite php83-fileinfo php83-simplexml \
 #
 && cp /usr/share/zoneinfo/America/New_York /etc/localtime \
 && echo "America/New_York" > /etc/timezone \
