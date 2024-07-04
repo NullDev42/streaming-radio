@@ -10,7 +10,7 @@ Mpd       0.23.15
 Icecast   2.4.4
 Nginx     1.26.1
 Php       8.3.8
-Rompr     1.61
+Rompr     2.15
 ```
 
 ## Installation
