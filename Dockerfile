@@ -1,7 +1,6 @@
-#FROM php:8.1-fpm-alpine
 FROM alpine:3.20.1
 
-ENV ROMPR_VERSION=1.61 \
+ENV ROMPR_VERSION=2.15 \
 ADMIN_PASSWORD=qwe123test \
 HOSTNAME=localhost \
 NAMESTREAM=radio \
@@ -46,16 +45,14 @@ RUN apk add --update --no-cache wget unzip bash nano tzdata mpd icecast ncmpc su
 && chown -R nginx:nginx /etc/nginx \
 && rm -f /etc/nginx/conf.d/default.conf \
 && mkdir /run/php-fpm
-
-#RUN ln -sf /conf/php/php.ini /etc/php81/php.ini
-#RUN ln -sf /conf/php/www.conf /etc/php81/php-fpm.d/www.conf
-#RUN chown -R nginx:nginx /etc/php81
+#
+COPY commradioplugin.class.php /srv/rompr/streamplugins/classes/commradioplugin.class.php
 #
 #RUN chmod 755 /entrypoint.sh
 RUN chown root:root /usr/bin/mpd
 
 EXPOSE 80
 EXPOSE 8002
-VOLUME ["/var/lib/mpd", "/srv/rompr/prefs", "/srv/rompr/albumart"]
+VOLUME ["/var/lib/mpd", "/srv/rompr/prefs", "/srv/rompr/albumart", "/Music"]
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
 ENTRYPOINT ["/entrypoint.sh"]
